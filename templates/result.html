@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Результат</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+<section class="page-section">
+    <div class="container">
+        <h1>Результат обработки изображения</h1>
+        <img class="border border-1 border-black rounded-3 w-25"  src="{{ image }}">
+        <p>{{ result }}</p>
+        <a class="btn btn-primary" href="/">Загрузить другое изображение</a>
+    </div>
+</section>
+</body>
+</html>

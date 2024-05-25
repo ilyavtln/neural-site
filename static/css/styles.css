@@ -1,0 +1,6 @@
+@import url(bootstrap.css);
+
+h1 {
+    background-color: beige;
+    padding: 1rem;
+}
