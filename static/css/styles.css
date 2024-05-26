@@ -1,6 +1,21 @@
-@import url(bootstrap.css);
+@import "bootstrap.css";
+@import "base.css";
 
-h1 {
-    background-color: beige;
-    padding: 1rem;
+.h-5-rem {
+  max-height: 5rem;
+}
+
+.banner-wrapper_three {
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
 }

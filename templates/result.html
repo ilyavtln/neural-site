@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+{% include menu_path %}
 <section class="page-section">
     <div class="container">
-        <h1>Результат обработки изображения</h1>
-        <img class="border border-1 border-black rounded-3 w-25"  src="{{ image }}">
-        <p>{{ result }}</p>
-        <a class="btn btn-primary" href="/">Загрузить другое изображение</a>
+        <div class="p-lg-5 p-md-4 p-3 bg-01 rounded-4">
+            <h1>Результат обработки изображения</h1>
+            <img class="border border-1 border-black rounded-3 w-25"  src="{{ image }}">
+            <p>{{ result }}</p>
+            <a class="btn btn-primary" href="/">Загрузить другое изображение</a>
+        </div>
     </div>
 </section>
 </body>

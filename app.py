@@ -1,6 +1,6 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect
 import os
-from werkzeug.utils import secure_filename
+from werkzeug.utils import secure_filename, send_from_directory
 from model.get_result import process_image  # Импорт функции обработки изображения нейросетью
 
 app = Flask(__name__)
@@ -10,6 +10,8 @@ UPLOAD_FOLDER = 'static/uploads/'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+menu_path = 'components/menu/menu.html'
 
 
 def allowed_file(filename):
@@ -33,8 +35,19 @@ def upload_file():
             # Обработка изображения нейросетью
             result = process_image(filepath)
 
-            return render_template('result.html', result=result, image=filepath)
-    return render_template('index.html')
+            return render_template('result.html', result=result, image=filepath, menu_path=menu_path)
+    return render_template('index.html', menu_path=menu_path)
+
+
+@app.route('/services/get-numbers')
+def render_services():
+    return render_template('services/get-numbers.html', menu_path=menu_path)
+
+
+@app.route('/uploaded')
+def show_uploaded():
+    images = os.listdir(app.config['UPLOAD_FOLDER'])
+    return render_template('uploaded/uploaded.html', image_files=images, menu_path=menu_path)
 
 
 if __name__ == '__main__':
