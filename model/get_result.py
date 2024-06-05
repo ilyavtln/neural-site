@@ -25,7 +25,7 @@ def process_image(filepath):
     for image in cropped_images:
         digits.append(process_image_by_img(image))
 
-    digits_on_img = ' '.join(map(str, digits))
+    digits_on_img = ''.join(map(str, digits))
 
     digits_on_img = digits_on_img.replace('--', '=').lower()
 
@@ -142,10 +142,10 @@ def process_image_by_img(test_img):
 def preprocess_image(filepath):
     img = cv2.imread(filepath, cv2.IMREAD_GRAYSCALE)
 
-    # Применение фильтра Гаусса для сглаживания изображения
+    # Фильтр Гаусса для сглаживания изображения
     blurred = cv2.GaussianBlur(img, (5, 5), 0)
 
-    # Использование Canny  для выделения контуров
+    # Выделение контуров
     edges = cv2.Canny(blurred, 120, 150)
 
     # Находим контуры символов

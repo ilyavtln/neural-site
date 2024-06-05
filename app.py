@@ -43,7 +43,10 @@ def services_extract():
             # Обработка изображения нейросетью
             result = process_image(filepath)
 
-            return render_template('result.html', result=result, image='/' + filepath, from_page='services_extract',
+            return render_template('result.html',
+                                   result=result,
+                                   image='/' + filepath,
+                                   from_page='services_extract',
                                    menu_path=menu_path)
     return render_template('services/extract.html', menu_path=menu_path)
 
