@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Извлечение из изображений</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <script defer src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+            integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+{% include menu_path %}
+<section class="page-section">
+    <div class="container">
+        <div class="p-lg-5 p-md-4 p-3 bg-01 rounded-4">
+            <h1 class="mb-2">Загрузите изображение</h1>
+            <form action="/services/extract" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="file" name="file">
+                </div>
+                <div>{{ error }}</div>
+                <button type="submit" class="mt-3 btn btn-primary">Загрузить</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="page-section">
+    <div class="container">
+        <div onclick="update_block('scroll_block')" class="px-lg-5 p-md-4 p-3 bg-01 rounded-4 box">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex align-items-center">
+                    <h2>Инструкция</h2>
+                </div>
+                <div class="d-flex align-items-center display-6">
+                    <i class="bi bi-plus-circle"></i>
+                </div>
+            </div>
+            <!-- скрытый блок, который появится при нажатии -->
+            <div id="scroll_block" class="hidden-content">
+                <!-- сюда можно вставлять любое содержимое с любой сложностью вёрстки -->
+                <ul>
+                    <li>собирает сайт по макету дизайнера;</li>
+                    <li>использует для этого HTML, CSS, JavaScript и несколько других языков;</li>
+                    <li>понимает процессы, которые происходят во время создания сайта;</li>
+                    <li>знает, как опубликовать сайт в Сети так, чтобы он выглядел одинаково на всех устройствах;</li>
+                    <li>умеет работать с Git или другим инструментом контроля версий;</li>
+                    <li>Использует Webpack для сборки проекта и вообще оперирует препроцессорами.</li>
+                </ul>
+                <p> Звучит сложно, но вот основное: фронтенд берёт макет будущего сайта (картинку) и превращает его в
+                    код, который можно отправить клиенту. При необходимости он программирует интерактивные элементы и
+                    анимацию, которые будут обрабатываться на клиенте. </p>
+                <p>Часто фронтендов путают с верстальщиками, но на самом деле верстальщик — это специалист узкого
+                    профиля (вёрстка по макету). А фронт кроме этого может и слайдер прикрутить, и шаблон в CMS
+                    поправить, и закодить нестандартное поведение картинки при нажатии, и написать скрипт для проверки
+                    правильности заполнения данных на сайте.</p>
+
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

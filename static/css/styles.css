@@ -1,21 +1,60 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 @import "bootstrap.css";
 @import "base.css";
 
 .h-5-rem {
-  max-height: 5rem;
+    max-height: 5rem;
+}
+
+.img-wrapper {
+    max-width: 7.5rem;
+    height: auto;
+}
+
+.box {
+    cursor: pointer;
+}
+
+.w-fit-content {
+    width: fit-content;
+}
+
+.hidden-content {
+  display: none;
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  transition: height 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.hidden-content.show {
+  display: block;
+  height: auto;
+  opacity: 1;
+  transition: height 0.5s ease-in, opacity 0.5s ease-in;
+}
+
+.banner-wrapper_two {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
 }
 
 .banner-wrapper_three {
-  grid-template-columns: 1fr;
-  gap: 1rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
 
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
 
-  @media (min-width: 1200px) {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
+    @media (min-width: 1200px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
 }

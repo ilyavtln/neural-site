@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Загрузка изображения</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <script defer src="{{ url_for('static', filename='js/index.js') }}"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
             crossorigin="anonymous"></script>
@@ -14,19 +16,98 @@
 </head>
 <body>
 {% include menu_path %}
+
 <section class="page-section">
     <div class="container">
-        <div class="p-lg-5 p-md-4 p-3 bg-01 rounded-4">
-            <h1 class="mb-2">Загрузите изображение</h1>
-            <form action="/" method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                    <input type="file" name="file">
-                </div>
-                <div>{{ error }}</div>
-                <button type="submit" class="mt-3 btn btn-primary">Загрузить</button>
-            </form>
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner rounded-4">
+                {% for banner in config.carousel_config %}
+                    <div class="carousel-item active">
+                        <img src="{{banner.image}}" class="d-block w-100 rounded-4" alt="...">
+                        <div class="carousel-caption">
+                            <div>{{ banner.title }}</div>
+                        </div>
+                    </div>я
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
 </section>
+
+<section class="page-section">
+    <div class="container">
+        <div class="d-grid banner-wrapper_two">
+            {% for banner in config.banner_config %}
+                <div class="bg-01 p-lg-5 p-md-4 p-3 bg-01 rounded-4 d-flex justify-content-between">
+                    <div class="d-flex flex-column justify-content-between">
+                        <div>
+                            <h2>{{ banner.title }}</h2>
+                            <p>{{ banner.description }}</p>
+                        </div>
+                        <a href="{{ banner.anchor.href }}" class="btn btn-primary w-fit-content">{{ banner.anchor.title }}</a>
+                    </div>
+                    <div class="d-flex align-items-end">
+                        <img class="img-wrapper" src="{{ banner.image }}" alt="">
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="page-section">
+    <div class="container">
+        <div onclick="update_block('scroll_block')" class="px-lg-5 p-md-4 p-3 bg-01 rounded-4 box">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex align-items-center">
+                    <h2>Инструкция</h2>
+                </div>
+                <div class="d-flex align-items-center display-6">
+                    <i class="bi bi-plus-circle"></i>
+                </div>
+            </div>
+            <!-- скрытый блок, который появится при нажатии -->
+            <div id="scroll_block" class="hidden-content">
+                <!-- сюда можно вставлять любое содержимое с любой сложностью вёрстки -->
+                <ul>
+                    <li>собирает сайт по макету дизайнера;</li>
+                    <li>использует для этого HTML, CSS, JavaScript и несколько других языков;</li>
+                    <li>понимает процессы, которые происходят во время создания сайта;</li>
+                    <li>знает, как опубликовать сайт в Сети так, чтобы он выглядел одинаково на всех устройствах;</li>
+                    <li>умеет работать с Git или другим инструментом контроля версий;</li>
+                    <li>Использует Webpack для сборки проекта и вообще оперирует препроцессорами.</li>
+                </ul>
+                <p> Звучит сложно, но вот основное: фронтенд берёт макет будущего сайта (картинку) и превращает его в
+                    код, который можно отправить клиенту. При необходимости он программирует интерактивные элементы и
+                    анимацию, которые будут обрабатываться на клиенте. </p>
+                <p>Часто фронтендов путают с верстальщиками, но на самом деле верстальщик — это специалист узкого
+                    профиля (вёрстка по макету). А фронт кроме этого может и слайдер прикрутить, и шаблон в CMS
+                    поправить, и закодить нестандартное поведение картинки при нажатии, и написать скрипт для проверки
+                    правильности заполнения данных на сайте.</p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="page-section"></section>
 </body>
 </html>

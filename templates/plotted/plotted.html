@@ -3,8 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Загрузка изображения</title>
+    <title>Построенные изображения</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <script defer src="{{ url_for('static', filename='js/index.js') }}"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
             crossorigin="anonymous"></script>
@@ -16,7 +18,17 @@
 {% include menu_path %}
 <section class="page-section">
     <div class="container">
-        <h1 class="mb-2">Загрузите изображение</h1>
+        <div class="p-lg-5 p-md-4 p-3 bg-01 rounded-4">
+            <h1 class="mt-0 mb-2">Нарисованные графики</h1>
+            <ul>
+                {% for image in image_files if image != 'saved' %}
+                    <li>
+                        <p>{{ image }}</p>
+                        <img src="{{ url_for('static', filename='plotted/' + image) }}" alt="{{ image }}">
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </section>
 </body>
